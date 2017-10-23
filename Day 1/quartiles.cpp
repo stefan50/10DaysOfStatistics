@@ -22,12 +22,10 @@ int main() {
     float q3;
     if(n%2 == 0)
     {
-        n -= 2;
-        q3 = median(arr+n/2+2,n/2);
+        q3 = median(arr+n/2,n/2);
     }
-    else 
+    else
     {
-        n -= 1; 
         q3 = median(arr+n/2+1,n/2);
     }
     float q1 = median(arr,n/2);
