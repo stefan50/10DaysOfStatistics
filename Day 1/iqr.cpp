@@ -45,7 +45,7 @@ int main() {
     }
     else
     {
-        q3 = median(arr+n/2+1,sum/2);
+        q3 = median(arr+sum/2+1,sum/2);
     }
     float q1 = median(arr,sum/2);
     cout << fixed << setprecision(1) << q3-q1 << endl;
