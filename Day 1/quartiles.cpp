@@ -2,36 +2,43 @@
 
 #include <iostream>
 #include <algorithm> 
-#include <cmath>
 #include <stdlib.h>
 using namespace std;
 
-int median(int* arr,int num);
+float median(float* arr,int num);
 
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
     int n;
     cin >> n;
-    int* arr;
-    arr = (int*)malloc(sizeof(int)*n);
+    float* arr;
+    arr = (float*)malloc(sizeof(float)*n);
     for(int i=0; i<n; i++)
     {
         cin >> *(arr+i);
     }
     sort(arr,arr+n);
-    int q2 = median(arr,n);
-    int* tmp = find(arr,arr+n,q2);
-    n = floor(n/2);
-    int q1 = median(arr,n);
-    int q3 = median(tmp+1,n);
+    float q2 = median(arr,n);
+    float q3;
+    if(n%2 == 0)
+    {
+        n -= 2;
+        q3 = median(arr+n/2+2,n/2);
+    }
+    else 
+    {
+        n -= 1; 
+        q3 = median(arr+n/2+1,n/2);
+    }
+    float q1 = median(arr,n/2);
     cout << q1 << endl << q2 << endl << q3 << endl;
     free(arr);
     return 0;
 }
 
-int median(int* arr,int num)
+float median(float* arr,int num)
 {
-    int to_return = 0;
+    float to_return = 0;
     if(num % 2 != 0)
     {
         num /= 2;
